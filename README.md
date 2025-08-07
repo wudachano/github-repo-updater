@@ -35,12 +35,11 @@ python UpdateFromGitHub.py --user octocat --repo Hello-World --branch dev --outp
 
 This script requires a GitHub Personal Access Token (PAT) stored in a `.env` file:
 
-```env
+
 GITHUB_TOKEN=ghp_your_actual_token
 
 Save the file as:
 
-bash
 ../AccountSecrets/config_github.env
 
 (relative to the script location)
