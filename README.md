@@ -22,14 +22,19 @@ Install dependencies:
 pip install -r requirements.txt
 
 🚀 Usage
+```
 python UpdateFromGitHub.py --user <github_user> --repo <repo_name> --output <target_folder> [--branch <branch_name>]
-
+```
 Examples
 Update the latest version of a repo into a local folder:
+```
 python UpdateFromGitHub.py --user octocat --repo Hello-World --output D:\Projects\Hello
+```
 
 Using a specific branch:
+```
 python UpdateFromGitHub.py --user octocat --repo Hello-World --branch dev --output D:\Projects\Hello
+```
 
 ## 🔐 Authentication
 
