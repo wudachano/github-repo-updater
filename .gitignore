@@ -1,0 +1,10 @@
+# Skip downloaded files
+repo.zip
+__temp_extract__/
+
+# Env file with secrets
+*.env
+
+# Editor configs
+.vscode/
+.idea/
