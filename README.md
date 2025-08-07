@@ -31,14 +31,29 @@ python UpdateFromGitHub.py --user octocat --repo Hello-World --output D:\Project
 Using a specific branch:
 python UpdateFromGitHub.py --user octocat --repo Hello-World --branch dev --output D:\Projects\Hello
 
-🔐 Authentication
-This script requires a GitHub Personal Access Token (PAT) stored in a .env file:
+## 🔐 Authentication
 
-env
+This script requires a GitHub Personal Access Token (PAT) stored in a `.env` file:
+
+```env
 GITHUB_TOKEN=ghp_your_actual_token
-Save the .env file in:
+
+Save the file as:
+
+bash
 ../AccountSecrets/config_github.env
-(relative to the script file)
+
+(relative to the script location)
+
+A sample file is included as .env.example in the project root.
+Rename it and provide your own token as needed.
+
+📁 Folder structure:
+your_project/
+├── UpdateFromGitHub.py
+├── .env.example          # Sample config
+└── ../AccountSecrets/
+    └── config_github.env # Actual token used by the script
 
 🧾 .gitignore (recommended)
 gitignore
