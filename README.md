@@ -55,17 +55,18 @@ your_project/
 ├── .env.example          # Sample config
 └── ../AccountSecrets/
     └── config_github.env # Actual token used by the script
+```
 
-
-
-## 🧾 .gitignore (recommended)
-gitignore
+## 📄 .gitignore (recommended)
+```
 repo.zip
 __temp_extract__/
 *.env
 .vscode/
 .idea/
+```
 
 ## 📄 License
 MIT License
+
 
