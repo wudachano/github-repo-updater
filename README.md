@@ -54,6 +54,7 @@ your_project/
 └── ../AccountSecrets/
     └── config_github.env # Actual token used by the script
 
+
 ## 🧾 .gitignore (recommended)
 gitignore
 repo.zip
