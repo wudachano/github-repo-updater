@@ -54,7 +54,7 @@ your_project/
 └── ../AccountSecrets/
     └── config_github.env # Actual token used by the script
 
-🧾 .gitignore (recommended)
+## 🧾 .gitignore (recommended)
 gitignore
 repo.zip
 __temp_extract__/
@@ -62,6 +62,6 @@ __temp_extract__/
 .vscode/
 .idea/
 
-📄 License
+##📄 License
 MIT License
 
