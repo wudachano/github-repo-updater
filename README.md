@@ -18,7 +18,7 @@ A lightweight Python script that auto-updates a local folder from any GitHub rep
 
 Install dependencies:
 
-```bash
+
 pip install -r requirements.txt
 
 🚀 Usage
