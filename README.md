@@ -21,7 +21,7 @@ Install dependencies:
 
 pip install -r requirements.txt
 
-🚀 Usage
+## 🚀 Usage
 ```
 python UpdateFromGitHub.py --user <github_user> --repo <repo_name> --output <target_folder> [--branch <branch_name>]
 ```
