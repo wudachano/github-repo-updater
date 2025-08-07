@@ -62,6 +62,6 @@ __temp_extract__/
 .vscode/
 .idea/
 
-##📄 License
+## 📄 License
 MIT License
 
