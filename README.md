@@ -48,11 +48,14 @@ A sample file is included as .env.example in the project root.
 Rename it and provide your own token as needed.
 
 📁 Folder structure:
+
+```text
 your_project/
 ├── UpdateFromGitHub.py
 ├── .env.example          # Sample config
 └── ../AccountSecrets/
     └── config_github.env # Actual token used by the script
+
 
 
 ## 🧾 .gitignore (recommended)
