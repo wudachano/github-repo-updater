@@ -1,78 +1,83 @@
-# GitHub Repo Updater
+# github-repo-updater
 
-A lightweight Python script that auto-updates a local folder from any GitHub repository by downloading the latest zip and extracting its contents directly into a target directory.
+[![License](https://img.shields.io/badge/license-MIT-informational)](#license)
+![Python](https://img.shields.io/badge/python-3.9%2B-blue)
+![OS](https://img.shields.io/badge/OS-Windows%20%7C%20Linux-blue)
 
-## 📦 Features
+**ZIP-based updater from GitHub to a local folder with SHA tracking and robust cleanup.**
 
-- ✅ Supports both public and private GitHub repos
-- ✅ Avoids unnecessary downloads using commit SHA comparison
-- ✅ Auto-detects default branch if not specified
-- ✅ Overwrites existing files in the target folder
-- ✅ Loads GitHub token securely from `.env`
+This script downloads a repository branch as a ZIP, safely extracts it, and overwrites an existing local folder. It records the latest commit SHA in `.last_sha` to skip redundant updates and includes lock-safe cleanup for Windows.
 
-## ⚙️ Requirements
+## Features
+- Download a repo branch as ZIP and **safe-extract** (zip-slip guarded).
+- **Overwrite** the target folder while preserving structure.
+- Track remote version with a `.last_sha` file (skip if up-to-date).
+- Robust cleanup on Windows (handles read-only/temporarily locked files).
+- Clear exit codes for scripting/CI.
 
-- Python 3.7+
-- `requests`
-- `python-dotenv`
+## Requirements
+- Python 3.9+
+- Packages: `requests`, `python-dotenv`
 
-Install dependencies:
-
-
+```bash
 pip install -r requirements.txt
-
-## 🚀 Usage
-```
-python UpdateFromGitHub.py --user <github_user> --repo <repo_name> --output <target_folder> [--branch <branch_name>]
-```
-## Examples
-Update the latest version of a repo into a local folder:
-```
-python UpdateFromGitHub.py --user octocat --repo Hello-World --output D:\Projects\Hello
+# or
+pip install requests python-dotenv
 ```
 
-Using a specific branch:
-```
-python UpdateFromGitHub.py --user octocat --repo Hello-World --branch dev --output D:\Projects\Hello
-```
+## Authentication
 
-## 🔐 Authentication
+Set a GitHub **Personal Access Token** in the environment (preferred):
 
-This script requires a GitHub Personal Access Token (PAT) stored in a `.env` file:
+```bash
+# Windows (PowerShell)
+setx GITHUB_TOKEN "ghp_xxx"
 
-```
-GITHUB_TOKEN=ghp_your_actual_token
-```
-
-Save the file as:
-```
-../AccountSecrets/config_github.env
-```
-(relative to the script location)
-
-A sample file is included as .env.example in the project root.
-Rename it and provide your own token as needed.
-
-📁 Folder structure:
-
-```text
-your_project/
-├── UpdateFromGitHub.py
-├── .env.example          # Sample config
-└── ../AccountSecrets/
-    └── config_github.env # Actual token used by the script
+# macOS/Linux (bash)
+export GITHUB_TOKEN="ghp_xxx"
 ```
 
-## 📄 .gitignore (recommended)
-```
-repo.zip
-__temp_extract__/
-*.env
-.vscode/
-.idea/
+For public repos, the `public_repo` scope is sufficient; for private repos, use `repo`.
+
+> If your local copy of the script also supports reading from a `.env` file, that’s optional—environment variables are recommended.
+
+## Usage
+
+Place `UpdateFromGitHub.py` in the repo root, then run:
+
+```bash
+# Windows (PowerShell)
+python .\UpdateFromGitHub.py --user <github_user> --repo <repo_name> --output <local_folder> [--branch main]
+
+# macOS / Linux
+python3 ./UpdateFromGitHub.py --user <github_user> --repo <repo_name> --output <local_folder> [--branch main]
 ```
 
-## 📄 License
-MIT License
+### Example
 
+```bash
+python UpdateFromGitHub.py --user yourname --repo some-repo --output D:\Workspace\some-repo --branch main
+```
+
+## Arguments
+
+* `--user`  GitHub username
+* `--repo`  Repository name
+* `--output`  Target folder to overwrite with extracted files
+* `--branch` *(optional)* Branch name; defaults to the repo’s default branch
+
+## Exit codes
+
+* `0` success (including “already up to date”)
+* `1` failure (network/ZIP/extract/cleanup errors, etc.)
+
+## Notes
+
+* `.last_sha` is written to the **target** (`--output`) directory.
+* Antivirus/indexers may briefly lock files; the script retries and clears read-only flags automatically.
+* Use in CI or scheduled tasks to keep a local mirror current.
+
+## License
+
+[MIT](LICENSE)
 
