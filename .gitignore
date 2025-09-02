@@ -1,10 +1,18 @@
-# Skip downloaded files
-repo.zip
-__temp_extract__/
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
 
-# Env file with secrets
+# Updater artifacts
+.last_sha
+*.zip
+
+# Environment files (if any)
+.env
 *.env
 
-# Editor configs
-.vscode/
-.idea/
+# OS cruft
+.DS_Store
+Thumbs.db
+
